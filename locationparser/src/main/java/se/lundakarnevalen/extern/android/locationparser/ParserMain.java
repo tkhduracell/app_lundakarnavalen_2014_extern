@@ -2,7 +2,10 @@ package se.lundakarnevalen.extern.android.locationparser;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.Normalizer;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -14,11 +17,12 @@ import com.dd.plist.NSObject;
 import com.dd.plist.PropertyListFormatException;
 import com.dd.plist.PropertyListParser;
 
-
-
 public class ParserMain {
 
 	public static void main( String[] args ) throws IOException, PropertyListFormatException, ParseException, ParserConfigurationException, SAXException  {
+		List<String> listAddings = new ArrayList<String>();
+		List<String> strings = new ArrayList<String>();
+		
 		File file = new File("Places.xml");
 		NSDictionary rootDict = (NSDictionary)PropertyListParser.parse(file);
 		String[] locationNames = rootDict.allKeys();
@@ -31,8 +35,21 @@ public class ParserMain {
 			Double latitude = (Double) position3.get("latitude").toJavaObject();
 			Double longitude = (Double) position3.get("longitude").toJavaObject();
 			String name = position2.get("name").toString();
-			
-			System.out.println(name + " @ " + longitude + " , " + latitude);
+			String nameLower = name.toLowerCase();
+			nameLower = Normalizer.normalize(nameLower,
+			        Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
+			listAddings.add("data.add(new Dataelement(r.string.smanojen, R.string." + nameLower + ", " + latitude + "f, " + longitude + "f, " + "R.drawable.bubble_smanojen, DataType.SMALL_FUN));");
+			strings.add("<string name=\"" + nameLower + "\">"+name+"</string>");
+		}
+		
+		for (String s : listAddings) {
+			System.out.println(s);
+
+		}
+		System.out.println();
+		for (String s : strings) {
+			System.out.println(s);
+
 		}
 		
 //		for (String locationName : locationNames) {
