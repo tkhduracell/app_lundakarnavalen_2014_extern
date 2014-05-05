@@ -27,7 +27,7 @@ public class ParserMain {
 		NSDictionary rootDict = (NSDictionary)PropertyListParser.parse(file);
 		String[] locationNames = rootDict.allKeys();
 		
-		NSDictionary dict1 = (NSDictionary) rootDict.get("smånöjen");
+		NSDictionary dict1 = (NSDictionary) rootDict.get("tältnöjen");
 		NSArray positions = (NSArray) dict1.get("positions");
 		for (NSObject position : positions.getArray()) {
 			NSDictionary position2 = (NSDictionary) position;
@@ -35,10 +35,10 @@ public class ParserMain {
 			Double latitude = (Double) position3.get("latitude").toJavaObject();
 			Double longitude = (Double) position3.get("longitude").toJavaObject();
 			String name = position2.get("name").toString();
-			String nameLower = name.toLowerCase();
+			String nameLower = name.toLowerCase().replaceAll(" ", "_").replace('.', '!').replace('?', '!').replace('-', '!').replaceAll("!", "");
 			nameLower = Normalizer.normalize(nameLower,
 			        Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
-			listAddings.add("data.add(new Dataelement(r.string.smanojen, R.string." + nameLower + ", " + latitude + "f, " + longitude + "f, " + "R.drawable.bubble_smanojen, DataType.SMALL_FUN));");
+			listAddings.add("data.add(new DataElement(R.string.taltnojen, R.string." + nameLower + ", " + latitude + "f, " + longitude + "f, " + "R.drawable.taltnojen_logo, DataType.TENT_FUN));");
 			strings.add("<string name=\"" + nameLower + "\">"+name+"</string>");
 		}
 		
