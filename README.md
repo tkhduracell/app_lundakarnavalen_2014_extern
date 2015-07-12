@@ -1,7 +1,7 @@
 Lundakarnevalen 2014 - Android
 ======================
 
-Den externa Andriod applikationen för Lundakarnevalen 2014!
+Den externa Android applikationen för Lundakarnevalen 2014!
 
 ## Play Store Listing
 The application was published on [Google Play Store](https://play.google.com/store/apps/details?id=se.lundakarnevalen.extern.android)
