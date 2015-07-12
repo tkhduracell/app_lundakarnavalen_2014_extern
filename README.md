@@ -15,3 +15,5 @@ Screenshots from Google Play
 ## Contibutions
 The application was written during 1-2 weeks during Q2 2014. Filip Lindqvist (tkhduracell), Markus Larsson (karlmarkuslarsson) and some parts by Fredrik Persson.
 
+## Design documents
+[See more](DESIGN.md)
