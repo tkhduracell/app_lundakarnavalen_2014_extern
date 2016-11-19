@@ -13,7 +13,7 @@ Screenshots from Google Play
 <img alt="Image of a phone showing the application, displaying the map" src="./playstore-assets/play-store-3.jpg" width="270" height="480"  /> |
 
 ## Contibutions
-The application was written during 3-4 weeks during Q2 2014. 
+The application was written during 2 weeks in 2014 Q2. 
 
 ### Main contributors
  * Markus Larsson - [@karlmarkuslarsson](https://github.com/karlmarkuslarsson)
